@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import mysql.connector
 from db import get_connection
 #Bank account management system
