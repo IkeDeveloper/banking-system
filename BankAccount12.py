@@ -21,6 +21,7 @@ class BankAccount:
         self.transactions = []  # List to store transaction history
 
     def deposit(self, amount):
+        
         if amount > 0:
             self.balance += amount
             self._record_transaction('Deposit', amount)
@@ -250,7 +251,11 @@ class BankingSystemManager:
         """Deposit interface"""
         print("\n--- DEPOSIT MONEY ---")
         acc_num = (input("Enter account number: ")).strip().upper()
-        amount = float(input("Enter amount to deposit: $"))
+        try: 
+            amount = float(input("Enter amount to deposit: $"))
+        except ValueError:
+            messagebox.showerror("Error", "Invalid amount entered.")
+            return
         
         for account in self.accounts.values():
             if account.account_number == acc_num:
