@@ -1,7 +1,7 @@
 import mysql.connector
 from db import get_connection
 #Bank account management system
-#This is now the latest version
+#This is now the latest version 2
 class BankAccount:
     interest_rate = 0.01  # Base interest rate
     
@@ -439,17 +439,15 @@ class BankingSystemManager:
         
         for account_id, account in self.accounts.items():
 
-
+            #This is how we access data members from dictionaries. Unlike objects, we dont use dot notation.
+            #Check if account ID already exists in database
             cursor.execute("SELECT 1 FROM accounts WHERE account_id = %s", (account_id,))
             exists = cursor.fetchone()
 
-        if exists:
+        if exists: #Print error if data with identical ID already exists it database
             print("Account ID already exists, aborting insert.")
         else:
 
-  
-        
-    
          # Loop through dictionary and insert
             for acc_id, acc_obj in self.accounts.items():
                 sql_account = """INSERT INTO accounts 
